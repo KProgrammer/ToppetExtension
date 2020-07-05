@@ -1,35 +1,28 @@
-<style>
-    ul {
-        list-style-type: none;
-    }
-</style>
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
     <title>Toppet</title>
 </head>
 
 <body>
-    <script src="vue1.js"></script>
     <script src="parse.min.js"></script>
     <div id="app">
         <div id="add-answer">
-            <p>Question: </p><input type="text" v-model.number="current_question">
-            <p>Answer: </p><input type="text" v-model="current_answer">
-            <button @click="addAnswer">Add Answer</button>
+            <p>Question: </p><input type="text" id="question-text-input">
+            <p>Answer: </p><input type="text" id="answer-text-input">
+            <br>
+            <br>
+            <button id="add-answer-btn">Add Answer</button>
         </div>
         <div id="display-key">
-            <ul>
-                <li v-for="answer_key_obj in sorted_answer_key">
-                    {{ answer_key_obj.question }}. {{ answer_key_obj.answer }}
-                </li>
+            <ul id="list-id">
+
             </ul>
         </div>
-        <p id="status">{{ status }}</p>
     </div>
 
     <script src="code.js"></script>
