@@ -70,7 +70,19 @@ function saveAnswer(question, answer) {
     //console.log(`existingElem: ${existingElem}`)
 
 }
-
+//To send message to content script
+function sendMessage(message){	
+	let queryParams = {
+		active: true,
+		currentWindow: true
+	}
+	let querying = browser.tabs.query(queryParams);
+	querying.then((tabs)=>{
+		//console.log(tabs);
+		//console.log(message);
+		browser.tabs.sendMessage(tabs[0].id, message);
+	})
+}
 //GETS THE KEY FROM THE SERVER
 
 async function getKey() {
@@ -85,20 +97,10 @@ async function getKey() {
     }
     console.log(`%cKey Retrieved`, "background-color:green; font-size:20px; color:white;")
     keyArray = keyArr;
+	sendMessage(keyArr);
+	console.log("Message bhejrela")
     return keyArr;
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 //DOM INTERACTION FUNCTIONS
 
@@ -144,6 +146,8 @@ document.getElementById('answer-text-input').addEventListener("keydown", (event)
 //RUNS INT THE BEGINNING
 
 initializeStuff();
+console.log("Hallou");
 getKey().then((key) => {
     updateText();
 })
+
