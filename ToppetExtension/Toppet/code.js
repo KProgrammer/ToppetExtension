@@ -80,6 +80,10 @@ function sendMessage(message){
 		chrome.tabs.sendMessage(tabs[0].id, message);
 	});
 }
+function fill(){
+	sendMessage(keyArray);
+	console.log("Message bhejrela")
+}
 //GETS THE KEY FROM THE SERVER
 
 async function getKey() {
@@ -94,8 +98,6 @@ async function getKey() {
     }
     console.log(`%cKey Retrieved`, "background-color:green; font-size:20px; color:white;")
     keyArray = keyArr;
-	sendMessage(keyArr);
-	console.log("Message bhejrela")
     return keyArr;
 }
 
@@ -125,6 +127,8 @@ document.getElementById('add-answer-btn').addEventListener('click', () => {
     saveAnswer(document.getElementById('question-text-input').value, document.getElementById('answer-text-input').value);
 })
 
+document.getElementById('fill-btn').addEventListener('click', fill);
+
 //enter key reaction
 document.getElementById('question-text-input').addEventListener("keydown", (event) => {
     if (event.keyCode === 13) {
@@ -140,7 +144,7 @@ document.getElementById('answer-text-input').addEventListener("keydown", (event)
     }
 })
 
-//RUNS INT THE BEGINNING
+//RUNS IN THE BEGINNING
 
 initializeStuff();
 console.log("Hallou");
