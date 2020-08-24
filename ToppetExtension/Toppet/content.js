@@ -1,5 +1,5 @@
 console.log("Hallou");
-browser.runtime.onMessage.addListener(handleRequest)
+chrome.runtime.onMessage.addListener(handleRequest)
 //key is an array of objects of type {question: "", answer: ""}
 //C, response for Q1
 function isQChecked(question){

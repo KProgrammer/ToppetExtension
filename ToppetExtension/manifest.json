@@ -1,14 +1,14 @@
 {
     "manifest_version": 2,
     "name": "Toppet Extension",
-    "version": "2.0",
+    "version": "2.1",
     "browser_action": {
         "default_title": "Toppet",
         "default_popup": "Toppet/index.html"
     },
 	"content_scripts": [
 		{
-			"matches": ["<all_urls>"],
+			"matches": ["https://docs.google.com/*"],
 			"js": ["Toppet/content.js"]
 		}
 	],

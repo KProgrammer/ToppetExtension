@@ -38,7 +38,7 @@ function saveAnswer(question, answer) {
                     updateText()
                 }
             }
-            existingElem.set('answer', answer);
+            existingElem.set('answer', answer.toUpperCase());
             existingElem.save().then((obj) => {
                 keyArray.push({
                     question: question,
@@ -76,12 +76,9 @@ function sendMessage(message){
 		active: true,
 		currentWindow: true
 	}
-	let querying = browser.tabs.query(queryParams);
-	querying.then((tabs)=>{
-		//console.log(tabs);
-		//console.log(message);
-		browser.tabs.sendMessage(tabs[0].id, message);
-	})
+	chrome.tabs.query(queryParams, (tabs)=> {
+		chrome.tabs.sendMessage(tabs[0].id, message);
+	});
 }
 //GETS THE KEY FROM THE SERVER
 
