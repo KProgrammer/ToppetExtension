@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
     "name": "Toppet Extension",
-    "version": "2.2",
+    "version": "2.3",
     "browser_action": {
         "default_title": "Toppet",
         "default_popup": "Toppet/index.html"

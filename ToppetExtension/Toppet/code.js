@@ -42,7 +42,7 @@ function saveAnswer(question, answer) {
             existingElem.save().then((obj) => {
                 keyArray.push({
                     question: question,
-                    answer: answer
+                    answer: answer.toUpperCase()
                 })
                 updateText();
                 console.log(`%cUpdated Answer ${question}.${answer}`, "background-color:green; font-size:20px; color:white;")
@@ -58,7 +58,7 @@ function saveAnswer(question, answer) {
                 console.log(`%cSaved Answer ${question}.${answer}`, "background-color:green; font-size:20px; color:white;")
                 keyArray.push({
                     question: question,
-                    answer: answer
+                    answer: answer.toUpperCase()
                 })
                 updateText();
             }, error => {
@@ -103,6 +103,14 @@ async function getKey() {
 
 //DOM INTERACTION FUNCTIONS
 
+function customComp(a, b){
+	let tempa = a.question.split("(");
+	let tempb = b.question.split("(");
+	if (parseInt(tempa[0]) >= parseInt(tempb[0])){
+		return 1;
+	}
+	return -1;
+}
 function addText(text) {
     let list = document.getElementById('list-id');
     list.appendChild(document.createElement('li').appendChild(document.createTextNode(text)));
@@ -116,7 +124,8 @@ function removeText() {
 
 function updateText() {
     removeText();
-    keyArray.sort((a, b) => a.question - b.question);
+    keyArray.sort(customComp);
+	console.log(keyArray);
     for (let i = 0; i < keyArray.length; i++) {
         addText(`${keyArray[i].question}. ${keyArray[i].answer.toUpperCase()}`);
     }
