@@ -1,8 +1,8 @@
-const data = require('./secrets.json')
+let app_id, js_key, master_key;
 //Keys
-const app_id = data.app_id;
-const js_key = data.js_key;
-const master_key = data.master_key;
+app_id = secrets.app_id;
+js_key = secrets.js_key;
+master_key = secrets.master_key;
 
 let AnswersClass;
 
