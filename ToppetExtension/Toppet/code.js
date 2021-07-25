@@ -1,7 +1,8 @@
+const data = require('./secrets.json')
 //Keys
-const app_id = "UndlwaMHnxf9OeojE9KG18WBDUz9cf4HoiDHhZQB";
-const js_key = "EAH5Mf9usnC5NssCOW6A0ErquwBX7q2wauGMI3tP";
-const master_key = "NYTuBCBLHNW71CRiHrNZU00dcqIxMfOpieFTe00C"
+const app_id = data.app_id;
+const js_key = data.js_key;
+const master_key = data.master_key;
 
 let AnswersClass;
 
